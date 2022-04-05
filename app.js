@@ -36,7 +36,6 @@ app.use(express.static("public"));
 mongoose.connect(mongoConnectionURI, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
-	useFindAndModify: false,
 });
 
 app.listen(3000 || process.env.PORT, () => {
