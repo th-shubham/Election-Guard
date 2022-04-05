@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+
+<div class="starting">
+
+  <h1>See the latest happenings here!</h1>
+
+  <p>
+    <%= starting_content %>
+  </p>
+
+  <h2>Some of the rules before you start:-</h2>
+
+  <ul>
+    <li>You need to provide your address and name while reporting(Don't worry it will be only for our reference)</li>
+    <li>We have a very strong team and hence we can easily detect if the posted report is true or false. So refrain from posting anything false!</li>
+  </ul>
+
+
+<% posts.forEach((post)=>{ %>
+
+<h2><%= post.post_title%></h2>
+<p><%= post.post_body.substring(0 , 100) + " ..." %> <a href="/reports/<%=post._id%>">Read more</a> </p>
+
+<%}) %>
+
+<!-- } -->
+</div>
+
+<%- include("partials/footer") %>
