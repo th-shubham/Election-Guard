@@ -7,6 +7,7 @@ const ejs = require("ejs");
 const app = express();
 const _ = require("lodash");
 const mongoose = require("mongoose");
+const mongoConnectionURI = process.env.MONGO_URI;
 
 //! Routers
 const DeleteRouter = require("./routes/Delete");
@@ -32,11 +33,12 @@ app.set("view engine", "ejs");
 //! Serve static files
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/ElectionCorruption", {
+mongoose.connect(mongoConnectionURI, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
+	useFindAndModify: false,
 });
 
-app.listen(3000, () => {
+app.listen(3000 || process.env.PORT, () => {
 	console.log("Server started on port 3000");
 });
