@@ -8,7 +8,7 @@ const app = express();
 const _ = require("lodash");
 const mongoose = require("mongoose");
 const mongoConnectionURI = process.env.MONGO_URI;
-
+console.log(process.env.MONGO_SHELL_CONNECT);
 //! Routers
 const DeleteRouter = require("./routes/Delete");
 const UpdateRouter = require("./routes/Update");
@@ -38,6 +38,10 @@ mongoose.connect(mongoConnectionURI, {
 	useUnifiedTopology: true,
 });
 
-app.listen(3000 || process.env.PORT, () => {
-	console.log("Server started on port 3000");
+let port = process.env.PORT;
+if (port == null || port == "") {
+	port = 3000;
+}
+app.listen(port, function () {
+	console.log("Server started Successfully");
 });
